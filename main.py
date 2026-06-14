@@ -2,19 +2,40 @@ import sys
 
 from PySide6.QtWidgets import QApplication, QWidget ,QLabel
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QPixmap
 
 app = QApplication(sys.argv)
 
-window = QWidget() #oject holds the window of widget
+#oject holds the window of widget
+window = QWidget() 
 
-song_title = QLabel("Once Upon a Dream",window) #to show the song title inside the window 
+#to show the song title inside the window 
+song_title = QLabel("Once Upon a Dream",window) 
 
-artist = QLabel("Lana Del Rey",window)  #to show the artist name  inside the window 
+#to show the artist name  inside the window 
+artist = QLabel("Lana Del Rey",window)  
 
-song_title.move(100,15) #move the title in the window with padding
-artist.move(100,40) #move the artist name in the window with padding
+album_art = QLabel(window)
 
-window.resize(350, 80) #to resizing the window size
+album_art.move(10,10)
+
+album_art.resize(60,60)
+
+pixmap = QPixmap("album.jpg")
+
+
+album_art.setPixmap(pixmap) 
+
+album_art.re
+
+ #move the title in the window with padding
+song_title.move(100,15)
+
+#move the artist name in the window with padding
+artist.move(100,40) 
+
+ #to resizing the window sized
+window.resize(350, 80)
 
 #color inside the window
 window.setStyleSheet("""
@@ -30,7 +51,7 @@ window.setWindowFlags(
     Qt.FramelessWindowHint
 )
 
-#to display the ui of the window
+#to display the ui of the windowE
 window.show()
 
 app.exec()
