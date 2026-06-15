@@ -1,13 +1,26 @@
 import sys
 
-from PySide6.QtWidgets import QApplication, QWidget ,QLabel
-from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QWidget, QLabel
+from PySide6.QtCore import Qt, QPoint
 from PySide6.QtGui import QPixmap
 
 app = QApplication(sys.argv)
 
 #oject holds the window of widget
 window = QWidget() 
+
+window.old_pos = None
+
+def mousePressEvent(event):
+    print("Mouse Clicked")
+
+def mouseMoveEvent(event):
+    print("Mouse Moving")
+
+window.mousePressEvent = mousePressEvent
+window.mouseMoveEvent = mouseMoveEvent
+
+window.old_pos = QPoint(200,80)
 
 #to show the song title inside the window 
 song_title = QLabel("Once Upon a Dream",window) 
@@ -35,8 +48,10 @@ song_title.move(150,15)
 #move the artist name in the window with padding
 artist.move(150,40) 
 
+
  #to resizing the window sized
 window.resize(350, 80)
+
 
 #color inside the window
 window.setStyleSheet("""
