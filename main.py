@@ -23,10 +23,9 @@ album_art.resize(60,60)
 
 pixmap = QPixmap("album.jpg")
 
-
 album_art.setPixmap(pixmap) 
 
-album_art.re
+
 
  #move the title in the window with padding
 song_title.move(100,15)
