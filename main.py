@@ -9,13 +9,22 @@ app = QApplication(sys.argv)
 #oject holds the window of widget
 window = QWidget() 
 
-window.old_pos = None
 
+#Remember where the mouse is clicked 
 def mousePressEvent(event):
-    print("Mouse Clicked")
+    window.old_pos = event.globalPosition().toPoint()
 
 def mouseMoveEvent(event):
-    print("Mouse Moving")
+    new_pos = event.globalPosition().toPoint() #Get current mouse position.
+    delta = new_pos - window.old_pos # calulate How far did the mouse move
+    #Remember where the mouse is
+    window.move(
+    window.x() + delta.x(),
+    window.y() + delta.y()
+    )
+    window.old_pos = new_pos
+
+
 
 window.mousePressEvent = mousePressEvent
 window.mouseMoveEvent = mouseMoveEvent
@@ -51,6 +60,7 @@ artist.move(150,40)
 
  #to resizing the window sized
 window.resize(350, 80)
+
 
 
 #color inside the window
